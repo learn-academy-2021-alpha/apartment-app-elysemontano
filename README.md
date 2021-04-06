@@ -22,3 +22,11 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+<div>
+  <a href={sign_out_route }>Sign Out</a>
+</div>
+
+<div>
+  <a href={ sign_in_route }>Sign In</a>
+</div>

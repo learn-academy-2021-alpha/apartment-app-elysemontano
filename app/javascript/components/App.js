@@ -34,6 +34,7 @@ createNewApartment = (newApartment) => {
       sign_in_route,
       sign_out_route
     } = this.props
+
     return (
       <Router>
       <Header logged_in= { logged_in }
@@ -49,6 +50,10 @@ createNewApartment = (newApartment) => {
           { this.createNewApartment } />
         }} />
       }
+      { !logged_in &&
+        <Route path={ sign_in_route }
+      />}
+
         <Route path="/findapartments" render= { () => <FindApartments apartments = {this.state.apartments } />}
         />
         <Route path="/showapartment/:id" render = {(props) => {

@@ -9,7 +9,7 @@ const Header = (props) => {
 
   return (
     <div>
-      <Navbar color="faded" light>
+      <Navbar className="navstyle" color="faded" light>
         <NavbarBrand href="/" className="mr-auto">Home Sweet Home</NavbarBrand>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
         <Collapse isOpen={!collapsed} navbar>
@@ -38,7 +38,7 @@ const Header = (props) => {
                 <NavLink href={ props.sign_out_route }>Sign out</NavLink>
                </NavItem>
               }
-            
+
           </Nav>
         </Collapse>
       </Navbar>

@@ -8,7 +8,7 @@ class AddApartment extends Component {
     super(props)
     this.state = {
       form: {
-        address: '',
+        street: '',
         city: '',
         state: '',
         manager: '',
@@ -16,7 +16,7 @@ class AddApartment extends Component {
         price: '',
         bedrooms: '',
         bathrooms: '',
-        pets: '',
+        pets: ''
       },
       submitted: false
     }
@@ -24,7 +24,7 @@ class AddApartment extends Component {
 
   handleChange = (e) => {
     let { form } = this.state
-    form[e.target.name] = e.target.value
+    form[e.target.value] = e.target.value
     this.setState({ form: form })
   }
 
@@ -37,18 +37,7 @@ class AddApartment extends Component {
     return (
       <>
         <h1>AddApartment</h1>
-        <div>
-        { !props.logged_in &&
-            <NavItem>
-              <NavLink href={ props.sign_in_route }>Sign In</NavLink>
-            </NavItem>
-          }
-          { props.logged_in &&
-            <NavItem>
-              <NavLink href={ props.sign_out_route }>Sign out</NavLink>
-             </NavItem>
-            }
-            </div>
+
           <Form>
             <FormGroup>
               <Label for="street">Street Address</Label>
@@ -132,7 +121,7 @@ class AddApartment extends Component {
             }>Submit</Button>
           </Form>
           {this.state.submitted &&
-          <Redrirect to="/findapartments"/>}
+          <Redirect to="/findapartments"/>}
       </>
     );
   }

@@ -27,7 +27,7 @@ const Header = (props) => {
           </NavItem>
         </Nav>
         <Nav>
-        <NavItem>
+
           { !props.logged_in &&
               <NavItem>
                 <NavLink href={ props.sign_in_route }>Sign In</NavLink>
@@ -38,7 +38,7 @@ const Header = (props) => {
                 <NavLink href={ props.sign_out_route }>Sign out</NavLink>
                </NavItem>
               }
-            </NavItem>
+            
           </Nav>
         </Collapse>
       </Navbar>

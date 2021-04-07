@@ -1,15 +1,30 @@
+import React, { Component } from "react";
+import Header from "./components/Header"
+import FindApartments from "./pages/FindApartments"
+import AddApartment from "./pages/AddApartment"
+import ShowApartment from "./pages/ShowApartment"
+import Home from "./pages/Home"
+import NotFound from "./pages/NotFound"
 import {
   BrowserRouter as  Router,
   Route,
   Switch
 } from 'react-router-dom'
-import React from "react"
-import Header from "./components/Header"
-import FindApartments from "./pages/FindApartments"
-import AddApartment from "./pages/AddApartment"
-import Home from "./pages/Home"
+ import apartments from "./mockApartments.js"
 
-class App extends React.Component {
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      apartments: apartments
+    }
+  }
+
+
+
+createNewApartment = (newApartment) => {
+  console.log(newApartment);
+}
 
   render() {
     const {
@@ -24,15 +39,25 @@ class App extends React.Component {
       <Header logged_in= { logged_in }
               sign_in_route={ sign_in_route }
               sign_out_route={ sign_out_route }
+              // sign_up_route={ sign_up_route }
       />
       <Switch>
       { logged_in &&
-        <Route path="/addapartment" component={ AddApartment } />
+        <Route path="/addapartment"
+        render={(props) => {
+          return <AddApartment createNewApartment =
+          { this.createNewApartment } />
+        }} />
       }
+        <Route path="/findapartments" render= { () => <FindApartments apartments = {this.state.apartments } />}
+        />
+        <Route path="/showapartment/:id" render = {(props) => {
+          const id = +props.match.params.id;
+          const foundapartment = this.state.apartments.find(apartment => apartment.id === id);
+          return <ShowApartment apartment = { foundapartment } /> }} />
 
-
-        <Route path="/findapartments" component={ FindApartments } />
         <Route exact path="/" component={ Home } />
+        <Route component={ NotFound}/>
       </Switch>
       </Router>
     )

@@ -24,7 +24,7 @@ class AddApartment extends Component {
 
   handleChange = (e) => {
     let { form } = this.state
-    form[e.target.value] = e.target.value
+    form[e.target.name] = e.target.value
     this.setState({ form: form })
   }
 
@@ -64,7 +64,7 @@ class AddApartment extends Component {
                 <Label for="state">State</Label>
                 <Input
                   type="string"
-                  name="address" value={this.state.form.state}
+                  name="state" value={this.state.form.state}
                   onChange={this.handleChange} placeholder="State"/>
               </FormGroup>
               </Col>

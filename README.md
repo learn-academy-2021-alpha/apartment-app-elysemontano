@@ -34,3 +34,13 @@ Things you may want to cover:
 { !props.logged_in &&
 //       <Route path= { sign_in_route }/>
 //   }
+
+
+
+
+
+def create
+  pp current_user
+  apartment = Apartment.create(apartment_params)
+  (apartment.valid?) ? (render json: apartment) : (render json: apartment.errors, status: :unprocessable_entity)
+end

@@ -10,20 +10,50 @@ import {
   Route,
   Switch
 } from 'react-router-dom'
- import apartments from "./mockApartments.js"
+ // import apartments from "./mockApartments.js"
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      apartments: apartments
+      apartments: []
     }
   }
 
+  componentDidMount(){
+    this.findApartment();
+  }
 
+findApartment = () => {
+  fetch("http://localhost:3000/apartments")
+  .then(response => {
+    return response.json()
+  })
+  .then(apartment => {
+    this.setState({ apartment: apartment })
+  })
+  .catch(errors => {
+    console.log("index errors", errors);
+  })
+}
 
 createNewApartment = (newApartment) => {
-  console.log(newApartment);
+  fetch("http://localhost:3000/apartments", {
+    body: JSON.stringify(newApartment),
+    headers: {
+      "Content-Type" : "application/json"
+    },
+    method: "POST"
+  })
+  .then (response => {
+    response.status === 422 ? alert("something is wrong with your submission") : response.json()
+  })
+  .then(payload => {
+    this.findApartment()
+  })
+  .catch(errors => {
+    console.log("create errors", errors);
+  })
 }
 
   render() {
@@ -47,7 +77,7 @@ createNewApartment = (newApartment) => {
         <Route path="/addapartment"
         render={(props) => {
           return <AddApartment createNewApartment =
-          { this.createNewApartment } />
+          { this.createNewApartment } current_user= { current_user }/>
         }} />
       }
         <Route path="/findapartments" render= { () => <FindApartments apartments = {this.state.apartments } />}

@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+user1 = User.create email:"something@email.com", password:"something", password_confirmation:"something"
+user2 = User.create email:"someone@email.com", password:"something", encrypted_password:"something"
 
 apartments = [
   {
@@ -17,7 +19,8 @@ apartments = [
     price: '$3500',
     bedrooms: 4,
     bathrooms: 2,
-    pets: 'fish welcome!'
+    pets: 'fish welcome!',
+    user_id:user1.id
   },
   {
     id: 2,
@@ -29,7 +32,8 @@ apartments = [
     price: '$5000 a month',
     bedrooms: 8,
     bathrooms: 4,
-    pets: 'muppets only!'
+    pets: 'muppets only!',
+    user_id:user2.id
   },
   {
     id: 3,
@@ -41,7 +45,8 @@ apartments = [
     price: '$2000 a month',
     bedrooms: 3,
     bathrooms: 2,
-    pets: 'cats and medium sized dogs'
+    pets: 'cats and medium sized dogs',
+    user_id:user1.id
   },
 ]
 

@@ -30,3 +30,7 @@ Things you may want to cover:
 <div>
   <a href={ sign_in_route }>Sign In</a>
 </div>
+
+{ !props.logged_in &&
+//       <Route path= { sign_in_route }/>
+//   }

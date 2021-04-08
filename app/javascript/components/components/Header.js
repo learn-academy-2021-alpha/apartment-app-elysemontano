@@ -23,7 +23,13 @@ const Header = (props) => {
             <NavLink href="/findapartments">Find Apartments</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/addapartment">Add Apartment</NavLink>
+          {
+            !props.logged_in &&
+                <NavLink href={ props.sign_in_route }>Add Apartment</NavLink>
+            }
+            { props.logged_in &&
+                <NavLink href="/addapartment">Add Apartment</NavLink>
+              }
           </NavItem>
         </Nav>
         <Nav>

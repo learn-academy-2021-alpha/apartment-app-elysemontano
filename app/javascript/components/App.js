@@ -50,10 +50,6 @@ createNewApartment = (newApartment) => {
           { this.createNewApartment } />
         }} />
       }
-      { !logged_in &&
-        <Route path={ sign_in_route }
-      />}
-
         <Route path="/findapartments" render= { () => <FindApartments apartments = {this.state.apartments } />}
         />
         <Route path="/showapartment/:id" render = {(props) => {

@@ -30,7 +30,7 @@ findApartment = () => {
     return response.json()
   })
   .then(apartment => {
-    this.setState({ apartment: apartment })
+    this.setState({ apartments: apartment })
   })
   .catch(errors => {
     console.log("index errors", errors);
